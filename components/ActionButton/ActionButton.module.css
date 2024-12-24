@@ -1,0 +1,13 @@
+.createWallet_cancel {
+  width: 50%;
+  height: 45px !important;
+  border: 1px solid #fff;
+  color: #fff !important;
+  background: #000 !important;
+}
+.createWallet_next {
+  width: 50%;
+  height: 45px !important;
+  color: #fff !important;
+  background: #6552fe !important;
+}

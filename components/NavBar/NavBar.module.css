@@ -1,0 +1,6 @@
+.navBar_Title {
+  width: calc(100% - 32px);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
