@@ -1,8 +1,9 @@
 /*
  * @Description:
  * @Date: 2024-12-24 12:35:43
- * @LastEditTime: 2024-12-24 13:23:59
+ * @LastEditTime: 2024-12-24 18:40:47
  */
+"use client";
 import {
   Box,
   HStack,
@@ -12,14 +13,17 @@ import {
   TabPanels,
   TabPanel,
 } from "@chakra-ui/react";
-import NavBar from "./../../components/NavBar";
+import NavBar from "./../components/NavBar";
 import styles from "./ForgetThePassword.module.css";
-import ActionButton from "../../components/ActionButton";
+import ActionButton from "./../components/ActionButton";
 import { useState } from "react";
-export default function ForgetThePassword() {
+export default function ForgetThePassword({ navigateToPage }) {
   return (
     <Box minH="100%">
-      <NavBar title="Forget the password" />
+      <NavBar
+        title="Forget the password"
+        callBack={() => navigateToPage("unlockPage")}
+      />
 
       <Tabs variant="soft-rounded" mt="20px">
         <TabList w="100%" className={styles.forgetThePassword_tabs}>

@@ -1,17 +1,18 @@
 /*
  * @Description:
  * @Date: 2024-12-24 12:16:18
- * @LastEditTime: 2024-12-24 17:14:59
+ * @LastEditTime: 2024-12-24 18:39:33
  */
-import AeroNyxText from "./../../components/AeroNyxText";
-import FaceImage from "./../../components/FaceImage";
-import SoonImage from "./../../components/SoonImage";
-import Password from "../../components/Password";
+"use client";
+import AeroNyxText from "./../components/AeroNyxText";
+import FaceImage from "./../components/FaceImage";
+import SoonImage from "./../components/SoonImage";
+import Password from "./../components/Password";
 import { Box, Button } from "@chakra-ui/react";
-import styles from "./../index.module.css";
+import styles from "./UnlockPage.module.css";
 import { useRouter } from "next/router";
 
-export default function UnlockPage() {
+export default function UnlockPage({ navigateToPage }) {
   let router = useRouter();
   return (
     <>
@@ -31,7 +32,7 @@ export default function UnlockPage() {
       </Box>
       <Box
         className={styles.import_wallet_button}
-        onClick={() => router.push("/ForgetThePassword")}
+        onClick={() => navigateToPage("forgetThePassword")}
       >
         forget the password?
       </Box>

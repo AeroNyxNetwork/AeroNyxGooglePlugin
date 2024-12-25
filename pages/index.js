@@ -1,31 +1,31 @@
 /*
  * @Description:
  * @Date: 2024-12-19 11:14:28
- * @LastEditTime: 2024-12-24 17:14:17
+ * @LastEditTime: 2024-12-24 18:39:01
  */
+"use client";
 import React, { useState } from "react";
-import AeroNyxText from "./../components/AeroNyxText";
-import FaceImage from "./../components/FaceImage";
-import SoonImage from "./../components/SoonImage";
-import { Box, Button } from "@chakra-ui/react";
-import styles from "./index.module.css";
-import { useRouter } from "next/navigation";
+import Index from "./../components/Index";
+import CreateWallet from "./../components/CreateWallet";
+import UnlockPage from "./../components/UnlockPage";
+import ForgetThePassword from "./../components/ForgetThePassword";
 export default function Home() {
-  const router = useRouter();
+  const [activePage, setActivePage] = useState("index");
+  const navigateToPage = (page) => {
+    setActivePage(page);
+  };
   return (
-    <Box>
-      <AeroNyxText />
-      <FaceImage />
-      <Box m="30px 0">
-        <SoonImage />
-      </Box>
-      <Button
-        onClick={() => router.push("/CreateWallet")}
-        className={styles.home_createWallet_button}
-      >
-        Create new wallet
-      </Button>
-      <Box className={styles.import_wallet_button}>Import wallet</Box>
-    </Box>
+    <>
+      {activePage === "index" && <Index navigateToPage={navigateToPage} />}
+      {activePage === "unlockPage" && (
+        <UnlockPage navigateToPage={navigateToPage} />
+      )}
+      {activePage === "createWallet" && (
+        <CreateWallet navigateToPage={navigateToPage} />
+      )}
+      {activePage === "forgetThePassword" && (
+        <ForgetThePassword navigateToPage={navigateToPage} />
+      )}
+    </>
   );
 }

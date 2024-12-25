@@ -1,10 +1,11 @@
 /*
  * @Description:
  * @Date: 2024-12-19 11:14:28
- * @LastEditTime: 2024-12-24 17:24:26
+ * @LastEditTime: 2024-12-25 11:30:42
  */
 const fs = require("fs");
 const glob = require("glob");
+const { setTimeout } = require("timers/promises");
 
 const files = glob.sync("out/**/*.html");
 files.forEach((file) => {
@@ -22,4 +23,11 @@ fs.rename(sourcePath, destinationPath, (err) => {
   } else {
     console.log('Renamed "_next" directory to "next" successfully.');
   }
+});
+
+const nextFiles = glob.sync("out/next/static/chunks/pages/**/*.js");
+nextFiles.forEach((file) => {
+  const content = fs.readFileSync(file, "utf-8");
+  const modifiedContent = content.replace(/\/_next/g, "./next");
+  fs.writeFileSync(file, modifiedContent, "utf-8");
 });
