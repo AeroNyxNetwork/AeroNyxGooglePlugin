@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2024-12-25 13:03:11
- * @LastEditTime: 2024-12-26 13:28:14
+ * @LastEditTime: 2024-12-30 21:17:07
  */
 const bip39 = require("bip39");
 const nacl = require("tweetnacl");
@@ -48,7 +48,6 @@ const EncryptPrivateKey = async (privateKey, password) => {
     return false;
   }
 };
-
 const DecryptionPrivateKey = (encryptedWallet, password) => {
   try {
     const salt = Buffer.from(encryptedWallet.salt, "hex");
