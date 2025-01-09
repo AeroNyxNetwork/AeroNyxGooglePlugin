@@ -1,9 +1,15 @@
 /*
  * @Description:
  * @Date: 2024-12-26 11:41:12
- * @LastEditTime: 2024-12-26 12:21:20
+ * @LastEditTime: 2025-01-09 11:16:38
  */
-export function PasswordValidator(password) {
+export function PasswordValidator(password, confirmPassword) {
+  if (!password && !confirmPassword) {
+    return "Password cannot be empty";
+  }
+  if (password !== confirmPassword) {
+    return "The two inputs are inconsistent";
+  }
   if (password.length < 8) return "At least 8 characters";
 
   if (!/[A-Z]/.test(password)) return "Contains at least one uppercase letter";

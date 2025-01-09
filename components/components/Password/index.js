@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2024-12-23 17:04:05
- * @LastEditTime: 2024-12-25 12:31:31
+ * @LastEditTime: 2025-01-09 10:21:12
  */
 
 import { InputGroup, Input, Button, InputRightElement } from "@chakra-ui/react";
@@ -21,14 +21,15 @@ export default function Password(props) {
         h="48px"
         lineHeight="48px"
         borderRadius="15px"
-        bg="#fff"
+        bg={props.bg ? props.bg : "#fff"}
+        color={props.color ? props.color : "#000"}
       />
       <InputRightElement width="4.5rem" mt="5px">
         <Button
           h="1.75rem"
           size="sm"
-          bg="#fff"
-          _hover={{ bg: "#fff" }}
+          bg={props.bg ? props.bg : "#fff"}
+          _hover={{ bg: props.bg ? props.bg : "#fff" }}
           onClick={handleClick}
         >
           {view ? (

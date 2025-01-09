@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2024-12-24 12:35:43
- * @LastEditTime: 2024-12-24 18:40:47
+ * @LastEditTime: 2025-01-09 15:31:56
  */
 "use client";
 import {
@@ -15,17 +15,21 @@ import {
 } from "@chakra-ui/react";
 import NavBar from "./../components/NavBar";
 import styles from "./ForgetThePassword.module.css";
-import ActionButton from "./../components/ActionButton";
+import ForgetThePasswordTabsPage from "./ForgetThePasswordTabsPage.js";
 import { useState } from "react";
 export default function ForgetThePassword({ navigateToPage }) {
+  const PageCallback = () => {
+    navigateToPage("unlockPage");
+  };
+
   return (
-    <Box minH="100%">
+    <Box>
       <NavBar
         title="Forget the password"
         callBack={() => navigateToPage("unlockPage")}
       />
 
-      <Tabs variant="soft-rounded" mt="20px">
+      <Tabs variant="soft-rounded" mt="20px" minH="520px">
         <TabList w="100%" className={styles.forgetThePassword_tabs}>
           <Tab
             w="50%"
@@ -44,25 +48,21 @@ export default function ForgetThePassword({ navigateToPage }) {
         </TabList>
         <TabPanels>
           <TabPanel p="0" m="20px 0">
-            <Box
-              border="1px solid #555"
-              borderRadius="10px"
-              minH="200px"
-              color="#999"
-              lineHeight="200px"
-              textAlign="center"
-            >
-              Enter Recovery Phrase
-            </Box>
+            <ForgetThePasswordTabsPage
+              placeholder="Enter Recovery Phrase"
+              type="mnemonic"
+              callBack={() => PageCallback()}
+            ></ForgetThePasswordTabsPage>
           </TabPanel>
-          <TabPanel>
-            <p>two!</p>
+          <TabPanel p="0" m="20px 0">
+            <ForgetThePasswordTabsPage
+              placeholder="Enter Private Key"
+              type="privateKey"
+              callBack={() => PageCallback()}
+            ></ForgetThePasswordTabsPage>
           </TabPanel>
         </TabPanels>
       </Tabs>
-      <Box className={styles.forgetThePassword_actionButton}>
-        <ActionButton />
-      </Box>
     </Box>
   );
 }

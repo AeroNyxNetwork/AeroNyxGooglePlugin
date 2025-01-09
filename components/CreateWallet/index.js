@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2024-12-23 16:52:24
- * @LastEditTime: 2024-12-26 13:25:51
+ * @LastEditTime: 2025-01-09 11:16:09
  */
 "use client";
 import styles from "./CreateWallet.module.css";
@@ -27,14 +27,8 @@ export default function CreateWallet({ navigateToPage }) {
         "Please agree Agree to AeroNyx<Privacy Policy>"
       );
     }
-    if (!newPassword && !confirmPassword) {
-      return ShowToastRef?.current?.Error("Password cannot be empty");
-    }
-    if (newPassword !== confirmPassword) {
-      return ShowToastRef?.current?.Error("The two inputs are inconsistent");
-    }
     setIsloading(true);
-    let passwordVerify = await PasswordValidator(newPassword);
+    let passwordVerify = await PasswordValidator(newPassword, confirmPassword);
     if (passwordVerify) {
       setIsloading(false);
       return ShowToastRef?.current?.Error(passwordVerify);
