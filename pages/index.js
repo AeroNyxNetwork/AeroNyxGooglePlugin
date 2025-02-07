@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2024-12-19 11:14:28
- * @LastEditTime: 2025-01-09 16:08:11
+ * @LastEditTime: 2025-02-07 11:39:28
  */
 "use client";
 import React, { useState, useEffect } from "react";
@@ -12,7 +12,7 @@ import ForgetThePassword from "./../components/ForgetThePassword";
 import { Box } from "@chakra-ui/react";
 import { getChromeLocal } from "./../components/Methods/wallet";
 export default function Home() {
-  const [activePage, setActivePage] = useState("index");
+  const [activePage, setActivePage] = useState("forgetThePassword");
   const navigateToPage = (page) => {
     setActivePage(page);
   };

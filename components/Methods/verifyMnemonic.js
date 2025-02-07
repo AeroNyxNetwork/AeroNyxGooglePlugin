@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2025-01-08 15:34:34
- * @LastEditTime: 2025-01-09 16:03:41
+ * @LastEditTime: 2025-02-07 13:55:36
  */
 
 import { EncryptPrivateKey } from "./wallet";
@@ -11,9 +11,6 @@ const { Keypair } = require("@solana/web3.js");
 const { createDecipheriv, pbkdf2Sync } = require("crypto");
 
 export const VerifyMnemonic = async (mnemonic, password) => {
-  if (!bip39.validateMnemonic(mnemonic)) {
-    return false;
-  }
   const privateKey = await mnemonicToPrivateKey(mnemonic);
   const encryptedPrivateKey = await EncryptPrivateKey(privateKey, password);
   return encryptedPrivateKey;
