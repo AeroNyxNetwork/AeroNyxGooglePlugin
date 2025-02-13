@@ -1,10 +1,10 @@
 /*
  * @Description:
  * @Date: 2024-12-23 16:52:24
- * @LastEditTime: 2025-01-09 11:16:09
+ * @LastEditTime: 2025-02-13 15:10:18
  */
 "use client";
-import styles from "./CreateWallet.module.css";
+import styles from "./CreateWallet.module.scss";
 import AeroNyxText from "./../components/AeroNyxText";
 import FaceImage from "./../components/FaceImage";
 import Password from "./../components/Password";
@@ -12,9 +12,11 @@ import ActionButton from "./../components/ActionButton";
 import { Box, HStack, useToast, Checkbox } from "@chakra-ui/react";
 import { GenerateWallet } from "./../Methods/wallet";
 import { PasswordValidator } from "./../Methods/passwordValidator";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ShowToast from "./../Methods/pageToast";
-export default function CreateWallet({ navigateToPage }) {
+import { observer } from "mobx-react-lite";
+import { counterStore } from "./../Stores/counterStore";
+function CreateWallet() {
   const ShowToastRef = useRef(null);
   let [newPassword, setNewPassword] = useState(null);
   let [confirmPassword, setConfirmPassword] = useState(null);
@@ -38,12 +40,19 @@ export default function CreateWallet({ navigateToPage }) {
     if (wallet) {
       setIsloading(false);
       ShowToastRef?.current?.Success("success");
-      navigateToPage("unlockPage");
+      counterStore.SwitchCurrentPage("unlockPage");
     } else {
       setIsloading(false);
       ShowToastRef?.current?.Error("create error");
     }
   };
+
+  useEffect(() => {
+    if (counterStore.privacyPolicy_checkbox) {
+      console.log("first", counterStore.privacyPolicy_checkbox);
+      setCheckboxValue(true);
+    }
+  }, [counterStore.privacyPolicy_checkbox]);
 
   return (
     <>
@@ -61,18 +70,28 @@ export default function CreateWallet({ navigateToPage }) {
           callBack={(e) => setConfirmPassword(e)}
         />
       </Box>
-      <Checkbox
-        value={checkboxValue}
-        onChange={() => setCheckboxValue(!checkboxValue)}
-        size="md"
-        colorScheme="green"
-        color="#999"
-        m="10px 0  30px 0"
-      >
-        {`Agree to AeroNyx<Privacy Policy>`}
-      </Checkbox>
+      <HStack>
+        <Checkbox
+          isChecked={checkboxValue}
+          onChange={() => setCheckboxValue(!checkboxValue)}
+          size="md"
+          colorScheme="green"
+          color="#999"
+          m="10px 0  30px 0"
+        >
+          {`Agree to AeroNyx`}
+        </Checkbox>
+        <Box
+          onClick={() => counterStore.SwitchCurrentPage("privacyPolicy")}
+          color="#999"
+          m="10px 0  30px 0"
+          cursor="pointer"
+        >{`<Privacy Policy>`}</Box>
+      </HStack>
       <ActionButton next={() => Next()} loading={isloading} />
       <ShowToast ref={ShowToastRef} />
     </>
   );
 }
+
+export default observer(CreateWallet);

@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2024-12-24 12:35:43
- * @LastEditTime: 2025-01-09 15:31:56
+ * @LastEditTime: 2025-02-13 14:21:31
  */
 "use client";
 import {
@@ -17,16 +17,18 @@ import NavBar from "./../components/NavBar";
 import styles from "./ForgetThePassword.module.css";
 import ForgetThePasswordTabsPage from "./ForgetThePasswordTabsPage.js";
 import { useState } from "react";
-export default function ForgetThePassword({ navigateToPage }) {
+import { observer } from "mobx-react-lite";
+import { counterStore } from "./../Stores/counterStore";
+function ForgetThePassword() {
   const PageCallback = () => {
-    navigateToPage("unlockPage");
+    counterStore.SwitchCurrentPage("unlockPage");
   };
 
   return (
     <Box>
       <NavBar
         title="Forget the password"
-        callBack={() => navigateToPage("unlockPage")}
+        callBack={() => counterStore.SwitchCurrentPage("unlockPage")}
       />
 
       <Tabs variant="soft-rounded" mt="20px" minH="520px">
@@ -66,3 +68,4 @@ export default function ForgetThePassword({ navigateToPage }) {
     </Box>
   );
 }
+export default observer(ForgetThePassword);

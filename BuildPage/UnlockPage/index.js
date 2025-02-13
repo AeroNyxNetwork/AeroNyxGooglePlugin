@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2024-12-24 12:16:18
- * @LastEditTime: 2024-12-26 13:10:33
+ * @LastEditTime: 2025-02-13 14:39:20
  */
 "use client";
 import AeroNyxText from "./../components/AeroNyxText";
@@ -9,12 +9,13 @@ import FaceImage from "./../components/FaceImage";
 import SoonImage from "./../components/SoonImage";
 import Password from "./../components/Password";
 import { Box, Button } from "@chakra-ui/react";
-import styles from "./UnlockPage.module.css";
+import styles from "./UnlockPage.module.scss";
 import { useState, useRef } from "react";
 import ShowToast from "./../Methods/pageToast";
 import { VerifyPassword } from "./../Methods/wallet";
-
-export default function UnlockPage({ navigateToPage }) {
+import { observer } from "mobx-react-lite";
+import { counterStore } from "./../Stores/counterStore";
+function UnlockPage() {
   const ShowToastRef = useRef(null);
   let [password, setPassword] = useState(null);
   let [isLoading, setIsLoading] = useState(false);
@@ -55,10 +56,11 @@ export default function UnlockPage({ navigateToPage }) {
       </Box>
       <Box
         className={styles.import_wallet_button}
-        onClick={() => navigateToPage("forgetThePassword")}
+        onClick={() => counterStore.SwitchCurrentPage("forgetThePassword")}
       >
         forget the password?
       </Box>
     </>
   );
 }
+export default observer(UnlockPage);

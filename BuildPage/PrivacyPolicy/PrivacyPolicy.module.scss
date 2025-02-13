@@ -1,0 +1,33 @@
+.privacyPolicy_text {
+  height: 500px;
+  overflow: auto;
+  > h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+  > div {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+.privacyPolicy_text::-webkit-scrollbar {
+  width: 0px;
+}
+.privacyPolicy_button {
+  margin-top: 20px;
+  > button {
+    width: 50%;
+    background: none;
+    color: #fff;
+    font-size: 12px;
+  }
+  > button:nth-child(1) {
+    border: 1px solid #fff;
+  }
+  > button:nth-child(1):hover {
+    background: none;
+  }
+  > button:nth-child(2) {
+    background: #6552fe;
+  }
+}
