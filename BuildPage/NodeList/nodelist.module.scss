@@ -1,0 +1,21 @@
+.listStyles {
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.list_scrollbars {
+  height: 500px;
+  margin-top: 10px;
+  overflow-y: auto;
+}
+.list_scrollbars::-webkit-scrollbar {
+  display: none;
+}
+.listStyles:nth-child(odd) {
+  background-color: rgba(26, 26, 26, 0.8);
+}
+.listStyles:nth-child(even) {
+  background-color: rgba(44, 44, 58, 0.8);
+}

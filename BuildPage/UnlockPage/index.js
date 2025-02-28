@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2024-12-24 12:16:18
- * @LastEditTime: 2025-02-13 14:39:20
+ * @LastEditTime: 2025-02-28 16:41:31
  */
 "use client";
 import AeroNyxText from "./../components/AeroNyxText";
@@ -28,6 +28,7 @@ function UnlockPage() {
     let passwordVerify = await VerifyPassword(password);
     if (passwordVerify) {
       ShowToastRef?.current?.Success("success");
+      counterStore.SwitchCurrentPage("nodeList");
       setIsLoading(false);
     } else {
       ShowToastRef?.current?.Error("Wrong password ");

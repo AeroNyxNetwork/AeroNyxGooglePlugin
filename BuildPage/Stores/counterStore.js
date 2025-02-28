@@ -1,11 +1,11 @@
 /*
  * @Description:
  * @Date: 2024-08-20 10:56:59
- * @LastEditTime: 2025-02-13 15:11:44
+ * @LastEditTime: 2025-02-28 16:42:53
  */
 import { makeAutoObservable } from "mobx";
 class CounterStore {
-  currentPage = "index";
+  currentPage = "nodeList";
   privacyPolicy_checkbox = false;
   constructor() {
     makeAutoObservable(this);

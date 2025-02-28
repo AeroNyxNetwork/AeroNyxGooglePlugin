@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2024-12-19 11:14:28
- * @LastEditTime: 2025-02-13 14:25:09
+ * @LastEditTime: 2025-02-28 13:36:40
  */
 "use client";
 import React, { useState, useEffect } from "react";
@@ -10,6 +10,7 @@ import CreateWallet from "./../BuildPage/CreateWallet";
 import UnlockPage from "./../BuildPage/UnlockPage";
 import ForgetThePassword from "./../BuildPage/ForgetThePassword";
 import PrivacyPolicy from "./../BuildPage/PrivacyPolicy";
+import NodeList from "./../BuildPage/NodeList";
 
 import { Box } from "@chakra-ui/react";
 import { getChromeLocal } from "./../BuildPage/Methods/wallet";
@@ -34,6 +35,7 @@ function Home() {
         <ForgetThePassword />
       )}
       {counterStore.currentPage === "privacyPolicy" && <PrivacyPolicy />}
+      {counterStore.currentPage === "nodeList" && <NodeList />}
     </>
   );
 }
